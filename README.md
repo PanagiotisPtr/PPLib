@@ -12,14 +12,22 @@ sudo make
 sudo make install
 ```
 
-If you want to run tests feel free to run them with ```make run_[example]_tests``` where "example" is the part of the library that you want to test. In the future ( once I add more features ) there should be an option to "run_all_tests". 
-
 To use the library after installing it just use the ```-lPPLib``` flag. Example:
 ```
 gcc -Wall main.c -o example.out -lPPLib
 ```
 
 Simple. Also note that the library is C89 Compliant ( won't give errors/warnings with -ansi flag ).
+
+## Running unit tests
+If you want to build and run the tests here is the normal procedure:
+```
+make build_all_tests
+make run_all_tests
+# if no errors come up it means things are fine ( most likely that is... )
+make clean_all_tests
+```
+Any commits made that add more tests for the project are most welcome. 
 
 ## How to stop using the library
 If you happen to be a peasant and want to use raw C ( may God help you ) feel free to uninstall the library simply by running:
