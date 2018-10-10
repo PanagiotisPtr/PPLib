@@ -4,6 +4,8 @@
 typedef void* Item;
 /* Uncomment the line below to run in debug mode */
 /* #define DEBUG_ON */
+/* Comment the line below to disable warnings printed on console */
+#define VERBOSE
 
 void swap_items(Item* a, Item* b);
 

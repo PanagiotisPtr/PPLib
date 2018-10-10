@@ -7,11 +7,11 @@
 void test_case_1(){
     vector v;
     int i;
-    PRINT_TESTCASE("TESTCASE_1");
+    PRINT_TESTCASE("SIMPLE USAGE");
     vector_init(&v);
 
     for(i=1; i <= 5; i++){
-        printf("Added %d\n", i);
+        printf("Added %d to vector\n", i);
         vector_add(&v, Int(i));
     }
 
@@ -86,6 +86,6 @@ int main(int argv, char **argc){
     test_case_1();
     test_case_2();
     test_case_3();
-    printf("Unit tests cleared\n");
+    TESTS_CLEARED("Vector");
     return 0;
 }

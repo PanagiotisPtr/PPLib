@@ -7,7 +7,11 @@ void vector_init(vector* v){
     v->capacity = VECTOR_INIT_CAPACITY;
     v->size = 0;
     v->items = malloc(sizeof(Item*)*v->capacity);
-    if(v->items==NULL) printf("Memory allocation error! [vector_init]\n");
+    if(v->items==NULL){
+        #ifdef VERBOSE
+        printf("Memory allocation error! [vector_init]\n");
+        #endif
+    }
 }
 
 size_t vector_size(vector* v){
@@ -20,7 +24,11 @@ void vector_resize(vector* v, size_t new_capacity){
     #endif
 
     v->items = realloc(v->items, sizeof(Item) * new_capacity);
-    if(v->items==NULL)printf("Memory allocation error! [vector_resize]\n");
+    if(v->items==NULL){
+        #ifdef VERBOSE
+        printf("Memory allocation error! [vector_resize]\n");
+        #endif
+    }
     v->capacity = new_capacity;
 }
 
@@ -30,21 +38,33 @@ void vector_add(vector* v, Item value){
 }
 
 void vector_set(vector* v, size_t index, Item value){
-    if(index >= v->size)printf("Index out of range! [vector_set]\n");
-    v->items[index] = value;
+    if(index >= v->size){
+        #ifdef VERBOSE
+        printf("Index out of range! [vector_set]\n");
+        #endif
+    }
+    else v->items[index] = value;
 }
 
 Item vector_get(vector *v, size_t index){
-    if(index >= v->size)printf("Index out of range! [vector_get]\n");
+    if(index >= v->size){
+        #ifdef VERBOSE
+        printf("Index out of range! [vector_get]\n");
+        #endif
+
+        return NULL;
+    }
     return v->items[index];
 }
 
 void optimize_space(vector* v){
     if(v->size > 0 && v->size == v->capacity / 4){
         vector_resize(v, v->capacity / 2);
+
         #ifdef DEBUG_ON
         printf("Performed Optimizations. Capacity is now: %u\n", v->capacity);
         #endif
+
     }
 }
 
